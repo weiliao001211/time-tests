@@ -29,5 +29,3 @@ def test_endstart_same():
     short = time_range("2010-01-12 12:00:00", "2010-01-12 12:45:00")
     expected = []
     assert compute_overlap_time(large, short) == expected
-
-
