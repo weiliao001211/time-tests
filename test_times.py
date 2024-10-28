@@ -33,5 +33,4 @@ def test_endstart_same():
 
 def test_time_range_backwards_error():
     with pytest.raises(ValueError, match="end_time must be after start_time"):
-        # 尝试生成一个起始时间晚于结束时间的区间，应该抛出 ValueError
         time_range("2024-10-10 12:00:00", "2024-10-09 12:00:00")
