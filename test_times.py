@@ -1,7 +1,7 @@
 # @Author : Wei Liao
 # @Time : 2024/10/28 09:40
 from times import compute_overlap_time, time_range
-
+import pytest
 
 def test_generic_case():
     large = time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00")
@@ -29,3 +29,9 @@ def test_endstart_same():
     short = time_range("2010-01-12 12:00:00", "2010-01-12 12:45:00")
     expected = []
     assert compute_overlap_time(large, short) == expected
+
+
+def test_time_range_backwards_error():
+    with pytest.raises(ValueError, match="end_time must be after start_time"):
+        # 尝试生成一个起始时间晚于结束时间的区间，应该抛出 ValueError
+        time_range("2024-10-10 12:00:00", "2024-10-09 12:00:00")
